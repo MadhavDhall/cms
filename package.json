@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "nodemon ./app.js -e js,env",
-    "start": "node app.js",
+    "start": "forever start app.js",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client && npm install forever -g"
   },
   "author": "Madhav Dhall",
