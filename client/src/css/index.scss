@@ -1,0 +1,117 @@
+@import "./basic";
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+// $mainThemeBg : #dededf;
+// $mainThemeBg: #192436;
+$mainThemeBg: rgb(5, 44, 96);
+#root {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+a{
+    text-decoration: none;
+    color: inherit;
+    &:hover{
+        color: inherit;
+    }
+}
+.theme{
+    background: $mainThemeBg;
+    color: white;
+    padding: 0.3rem;
+}
+.logo {
+    width: 9rem;
+}
+.input-field {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: left;
+    align-items: flex-end;
+    margin: 0.5rem;
+    border-bottom: 2px solid black;
+
+    color: #6b6a6a;
+
+    label {
+        padding-bottom: 0.15rem;
+    }
+
+    input {
+        padding: 0.5rem;
+        padding-bottom: 0.1rem;
+        margin-left: 0.5rem;
+        margin-right: auto;
+        color: #4d4c4c;
+
+        flex-grow: 2;
+        border: none;
+
+        &:focus {
+            outline: none;
+            color: black;
+        }
+        &:focus + label {
+            color: black;
+        }
+    }
+}
+.center-box {
+    margin: auto;
+}
+.box {
+    margin: 1rem 0.5rem 1rem 0.5rem;
+    border-radius: 1.8rem;
+    box-shadow: 0px 0px 24px -13px rgba(49, 47, 47, 1);
+}
+footer {
+    color: white;
+    text-align: center;
+    margin-top: auto;
+    background: $mainThemeBg;
+    padding: 0.1rem;
+}
+
+nav {
+    color: white;
+    background: $mainThemeBg;
+    box-shadow: 7px 7px 5px rgba(168, 162, 162, 0.96);
+}
+.sidenav{
+    min-height: 100vh;
+    z-index: 200;
+}
+.admin{
+    display: flex;
+    flex-direction: row;
+    justify-items: flex-start;
+}
+.sidenav{
+    ul{
+        list-style: none;
+        padding: 0;
+        text-align: center;
+
+        li{
+            margin-top: 0.6rem;
+        }
+    }
+    a{
+        color: white;
+        text-decoration: none;
+        font-size: 1.2rem;
+
+        &:hover{
+            color: rgb(219, 216, 216);
+        }
+    }
+}
+.scrollable{
+    overflow-x: auto;
+}
