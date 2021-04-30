@@ -11,7 +11,6 @@ const admins = require("../../models/admins")
 
 const checkDbConn1 = async (req, res, next) => {
     if (await db()) {
-        // res.redirect("/admin/setup/2")
         res.json({ message: "Second step not done. Setup.", redirect: "/admin/setup/2" })
     } else {
         next()
@@ -22,14 +21,12 @@ const checkDbConn2 = async (req, res, next) => {
     if (await db()) {
         next()
     } else {
-        // res.redirect("/admin/setup/1")
         res.json({ message: "Setup not done.", redirect: "/admin/setup/1" }).status(500)
     }
 }
 
 router.get("/", setupRedirect, async (req, res) => {
     if (await db()) {
-        // res.redirect("/admin/setup/2")
         res.json({ message: "Database Connected. Setup next steps.", redirect: "/admin/setup/2" })
     } else {
         res.json({ message: "Database not Connected. Setup initial steps.", redirect: "/admin/setup/1" })
@@ -37,7 +34,6 @@ router.get("/", setupRedirect, async (req, res) => {
 })
 
 router.get("/1", setupRedirect, checkDbConn1, async (req, res) => {
-    // res.sendFile(path.join(__dirname, "../../../html/setup1.html"))
     res.json({ message: "Database not Connected. Setup inital step.", success: true })
 })
 
@@ -65,6 +61,7 @@ module.exports = dbDetails`
             })
 
             res.status(201).json({ message: "Connection successful. Fill next details.", redirect: "/admin/setup/2" })
+            process.exit(1)
         })
             .catch((e) => res.status(500).json({ message: "Connection could not be made. Fill all details correctly again.", redirect: "/admin/setup/1" }))
 
