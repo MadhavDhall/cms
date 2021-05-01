@@ -60,7 +60,7 @@ module.exports = dbDetails`
                 if (e) console.log(e);
 
                 res.status(201).json({ message: "Connection successful. Fill next details.", redirect: "/admin/setup/2" })
-                process.exit(0)
+                process.exit(1)
             })
         })
             .catch((e) => res.status(500).json({ message: "Connection could not be made. Fill all details correctly again.", redirect: "/admin/setup/1" }))
