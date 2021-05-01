@@ -57,11 +57,11 @@ module.exports = dbDetails`
             useFindAndModify: false
         }).then(() => {
             fs.writeFile(path.join(__dirname, "../../config.js"), configContent, (e) => {
-                if(e) console.log(e);
-            })
+                if (e) console.log(e);
 
-            res.status(201).json({ message: "Connection successful. Fill next details.", redirect: "/admin/setup/2" })
-            process.exit(1)
+                res.status(201).json({ message: "Connection successful. Fill next details.", redirect: "/admin/setup/2" })
+                process.exit(0)
+            })
         })
             .catch((e) => res.status(500).json({ message: "Connection could not be made. Fill all details correctly again.", redirect: "/admin/setup/1" }))
 
@@ -91,11 +91,11 @@ router.post("/2", setupRedirect, checkDbConn2, async (req, res) => {
         if (verificationEmail == true) {
             // res.send(confirmScript("Check your Email and click on verification link to verify admin and Get Started.", "/admin"))
             res.status(201).json({ message: "Check your Email and click on verification link to verify admin and Get Started.", redirect: "/admin" })
-        } else if(verificationEmail == false) {
+        } else if (verificationEmail == false) {
             // res.send(confirmScript("This Email is already registered. Try visiting verification link sent on Email", "/admin/login"))
             res.status(500).json({ message: "This Email is already registered. Try visiting verification link sent on Email or if already verified, login and begin with CMS.", redirect: "/admin/login" })
-        }else{
-            res.status(500).json({ message:"Sending Email failed. Setup second step again.", redirect:"/admin/setup/2"})
+        } else {
+            res.status(500).json({ message: "Sending Email failed. Setup second step again.", redirect: "/admin/setup/2" })
         }
     } catch (error) {
         res.status(500).json({ message: "This Email is already registered. Try visiting verification link sent on Email or if already verified login and begin with CMS.", redirect: "/admin/login" })
